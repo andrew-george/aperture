@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .hover-gradient {
+    background-image: radial-gradient(
+      circle at var(--x) var(--y),
+      #ffffff11 0%,
+      transparent 20%
+    );
+  }
+
+  .shake {
+    animation: shake 0.5s ease-in-out;
+  }
+
+  @keyframes shake {
+    10%,
+    90% {
+      transform: translateX(-2px);
+    }
+    20%,
+    80% {
+      transform: translateX(2px);
+    }
+    30%,
+    50%,
+    70% {
+      transform: translateX(-2px);
+    }
+    40%,
+    60% {
+      transform: translateX(2px);
+    }
+  }
+}
+
+* {
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* chrome, edge, opera */
+*::-webkit-scrollbar {
+  display: none;
+}
+/* firefox */
+* {
+  scrollbar-width: none;
+}
+
+html {
+  position: relative;
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+}
