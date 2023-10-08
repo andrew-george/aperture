@@ -12,8 +12,10 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY as st
 function Checkout() {
 	const [clientSecret, setClientSecret] = useState('')
 	const cartItems = useAppSelector(state => state.cart.items)
+	const cartIsEmpty = cartItems.length === 0
 
 	useEffect(() => {
+    if(!cartIsEmpty){
 		fetch('/api/create-payment-intent', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
@@ -21,10 +23,10 @@ function Checkout() {
 		})
 			.then(res => res.json())
 			.then(data => setClientSecret(data.clientSecret))
+    }
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [cartItems])
 
-	const cartIsEmpty = cartItems.length === 0
 
 	const appearance: Appearance = {
 		theme: 'night',
