@@ -4,63 +4,63 @@ import { CartItemModel } from '../models'
 import type { RootState } from './store'
 
 interface CartState {
-	items: CartItemModel[]
+  items: CartItemModel[]
 }
 
 const initialState: CartState = {
-	items: [],
+  items: []
 }
 
 export const cartSlice = createSlice({
-	name: 'cart',
-	initialState,
-	reducers: {
-		addToCart: (state, action: PayloadAction<CartItemModel>) => {
-			const { payload } = action
-			const foundIndex = state.items.findIndex(
-				item => item.slug === payload.slug && item.size === payload.size && item.finish === payload.finish
-			)
+  name: 'cart',
+  initialState,
+  reducers: {
+    addToCart: (state, action: PayloadAction<CartItemModel>) => {
+      const { payload } = action
+      const foundIndex = state.items.findIndex(
+        item => item.slug === payload.slug && item.size === payload.size && item.finish === payload.finish
+      )
 
-			if (foundIndex >= 0) {
-				state.items[foundIndex].quantity = state.items[foundIndex].quantity + payload.quantity
-			} else {
-				state.items.push(payload)
-			}
+      if (foundIndex >= 0) {
+        state.items[foundIndex].quantity = state.items[foundIndex].quantity + payload.quantity
+      } else {
+        state.items.push(payload)
+      }
 
-			localStorage.setItem('cart', JSON.stringify(state))
-		},
+      localStorage.setItem('cart', JSON.stringify(state))
+    },
 
-		removeFromCart: (state, action: PayloadAction<string>) => {
-			state.items = state.items.filter(item => item.id !== action.payload)
+    removeFromCart: (state, action: PayloadAction<string>) => {
+      state.items = state.items.filter(item => item.id !== action.payload)
 
-			localStorage.setItem('cart', JSON.stringify(state))
-		},
+      localStorage.setItem('cart', JSON.stringify(state))
+    },
 
-		incrementCartItem: (state, action: PayloadAction<string>) => {
-			const foundIndex = state.items.findIndex(item => item.id === action.payload)
-			state.items[foundIndex].quantity++
-		},
+    incrementCartItem: (state, action: PayloadAction<string>) => {
+      const foundIndex = state.items.findIndex(item => item.id === action.payload)
+      state.items[foundIndex].quantity++
+    },
 
-		decrementCartItem: (state, action: PayloadAction<string>) => {
-			const foundIndex = state.items.findIndex(item => item.id === action.payload)
-			const foundQuantity = state.items[foundIndex].quantity
-			if (foundQuantity === 1) return
-			state.items[foundIndex].quantity--
-		},
+    decrementCartItem: (state, action: PayloadAction<string>) => {
+      const foundIndex = state.items.findIndex(item => item.id === action.payload)
+      const foundQuantity = state.items[foundIndex].quantity
+      if (foundQuantity === 1) return
+      state.items[foundIndex].quantity--
+    },
 
-		setCartState: (state, action: PayloadAction<CartState>) => (state = action.payload),
+    setCartState: (state, action: PayloadAction<CartState>) => (state = action.payload),
 
-		clearCart: state => {
-			state.items = []
-			//bug: json stringify was setting localstorage to an empty object, below is edited, check
-			localStorage.setItem('cart', JSON.stringify(state))
-		},
-	},
+    clearCart: state => {
+      state.items = []
+      //bug: json stringify was setting localstorage to an empty object, below is edited, check
+      localStorage.setItem('cart', JSON.stringify(state))
+    }
+  }
 })
 
 export const cart = (state: RootState) => state.cart
 
 export const { addToCart, setCartState, removeFromCart, incrementCartItem, decrementCartItem, clearCart } =
-	cartSlice.actions
+  cartSlice.actions
 
 export default cartSlice.reducer

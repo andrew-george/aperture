@@ -16,12 +16,6 @@
     "incremental": true,
     "paths": {}
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "cartContext.tsx",
-    "pages/api/create-payment-intent.ts"
-  ],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "cartContext.tsx", "pages/api/create-payment-intent.ts"],
   "exclude": ["node_modules"]
 }

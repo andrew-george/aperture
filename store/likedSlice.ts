@@ -4,31 +4,31 @@ import { ProductModel } from '../models'
 import type { RootState } from './store'
 
 interface LikedState {
-	likedItems: ProductModel[]
+  likedItems: ProductModel[]
 }
 
 const initialState: LikedState = {
-	likedItems: [],
+  likedItems: []
 }
 
 export const likedSlice = createSlice({
-	name: 'liked',
-	initialState,
-	reducers: {
-		toggleLike: (state, action: PayloadAction<ProductModel>) => {
-			const found = state.likedItems.find(item => item.id === action.payload.id)
+  name: 'liked',
+  initialState,
+  reducers: {
+    toggleLike: (state, action: PayloadAction<ProductModel>) => {
+      const found = state.likedItems.find(item => item.id === action.payload.id)
 
-			if (found) {
-				const filtered = state.likedItems.filter(item => item.id !== action.payload.id)
-				state.likedItems = filtered
-			} else {
-				state.likedItems.push(action.payload)
-			}
+      if (found) {
+        const filtered = state.likedItems.filter(item => item.id !== action.payload.id)
+        state.likedItems = filtered
+      } else {
+        state.likedItems.push(action.payload)
+      }
 
-			localStorage.setItem('liked', JSON.stringify(state))
-		},
-		setLikedItemsState: (state, action: PayloadAction<LikedState>) => (state = action.payload),
-	},
+      localStorage.setItem('liked', JSON.stringify(state))
+    },
+    setLikedItemsState: (state, action: PayloadAction<LikedState>) => (state = action.payload)
+  }
 })
 
 export const cart = (state: RootState) => state.cart
