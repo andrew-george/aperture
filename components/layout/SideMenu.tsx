@@ -10,8 +10,7 @@ function SideMenu() {
   return (
     <div
       onClick={() => dispatch(closeSideMenu())}
-      className="w-screen h-screen bg-gradient-to-b from-black/70 rounded-bl-3xl rounded-br-3xl fixed backdrop-blur-xl z-50"
-    >
+      className="w-screen h-screen bg-gradient-to-b from-black/70 rounded-bl-3xl rounded-br-3xl fixed backdrop-blur-xl z-50">
       <div className="w-4/5 m-auto space-y-4">
         <Header />
         <div className="font-mono space-y-8 [&>*]:block">

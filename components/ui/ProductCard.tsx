@@ -20,8 +20,7 @@ function ProductCard({ product }: { product: ProductModel }) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       ref={ref}
-      className="flex flex-col m-4 items-center w-96 h-80 bg-gray-500/5 border border-gray-900 rounded-md overflow-clip backdrop-blur-sm hover:hover-gradient"
-    >
+      className="flex flex-col m-4 items-center w-96 h-80 bg-gray-500/5 border border-gray-900 rounded-md overflow-clip backdrop-blur-sm hover:hover-gradient">
       <div className="relative w-full h-2/3">
         <Link href={`/${slug}`}>
           <Image src={img} alt={title} fill className="object-cover" />

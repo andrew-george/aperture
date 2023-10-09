@@ -24,8 +24,7 @@ function likes() {
         variants={cardsContainerVariant}
         initial="hidden"
         animate="visible"
-        className="flex min-h-[80vh] w-4/5 m-auto flex-wrap justify-evenly"
-      >
+        className="flex min-h-[80vh] w-4/5 m-auto flex-wrap justify-evenly">
         {likedItems.map(photo => (
           <ProductCard key={photo.id} product={photo} />
         ))}

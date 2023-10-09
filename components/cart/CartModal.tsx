@@ -19,8 +19,7 @@ function CartModal() {
       <div className="fixed flex items-center justify-center z-10 h-screen w-screen bg-black/70" onClick={closeModal}>
         <div
           className="flex h-4/5 w-[clamp(70%,700px,90%)] z-20 backdrop-blur-3xl bg-gray-600/5 text-white p-10 rounded-2xl"
-          onClick={e => e.stopPropagation()}
-        >
+          onClick={e => e.stopPropagation()}>
           <div className="flex flex-col items-center w-full">
             <h2 className="text-xl">Cart</h2>
             <MdClose className="cursor-pointer text-xl absolute top-[6%] right-[3%]" onClick={closeModal} />

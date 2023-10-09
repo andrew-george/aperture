@@ -19,8 +19,7 @@ function CartItems() {
         return (
           <div
             key={id}
-            className="flex flex-col md:flex-row items-center justify-around space-y-4 md:space-y-0 mx-0 my-8 bg-gradient-to-r from-black/30 backdrop-blur-xl rounded-lg p-4"
-          >
+            className="flex flex-col md:flex-row items-center justify-around space-y-4 md:space-y-0 mx-0 my-8 bg-gradient-to-r from-black/30 backdrop-blur-xl rounded-lg p-4">
             <div className="relative w-24 aspect-square">
               <Link href={`/${slug}`} onClick={() => dispatch(closeCartModal())}>
                 <Image src={img} alt={title} fill className="rounded object-cover" />
